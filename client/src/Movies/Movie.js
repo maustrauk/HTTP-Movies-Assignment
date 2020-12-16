@@ -25,6 +25,18 @@ const Movie = props => {
     props.history.push(`/update-movie/${movie.id}`);
   }
 
+  const deleteMovie = () => {
+    axios
+    .delete(`http://localhost:5000/api/movies/${params.id}`)
+    .then(res => {
+      props.history.push(`/`);
+      props.setReloadApp(!props.reloadApp);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   useEffect(() => {
     fetchMovie(params.id);
   }, [params.id]);
@@ -43,6 +55,10 @@ const Movie = props => {
 
       <div className="edit-button" onClick={editMovie}>
         Edit
+      </div>
+
+      <div className="delete-button" onClick={deleteMovie}>
+        Delete
       </div>
     </div>
   );

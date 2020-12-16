@@ -40,12 +40,12 @@ const App = () => {
       </Route>
 
       <Route path="/movies/:id"
-      render={props => <Movie {...props} addToSavedList={addToSavedList} />}
+      render={props => <Movie {...props} addToSavedList={addToSavedList} setReloadApp={setReloadApp} reloadApp={reloadApp}/>}
       />
 
 
       <Route path="/update-movie/:id"
-      render={props => <UpdateMovieForm {...props}  setReloadApp={setReloadApp}/>}
+      render={props => <UpdateMovieForm {...props}  setReloadApp={setReloadApp} reloadApp={reloadApp}/>}
       />
     </div>
   );

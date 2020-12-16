@@ -32,7 +32,7 @@ const UpdateMovieForm = props => {
         .then(res => {
             setMovie(initMovie);
             props.history.push(`/`);
-            props.setReloadApp(true);
+            props.setReloadApp(!props.reloadApp);
         })
         .catch(err => {
             console.log(err);
