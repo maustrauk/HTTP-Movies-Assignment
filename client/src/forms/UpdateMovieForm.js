@@ -1,6 +1,7 @@
 import React, {  useEffect, useState } from 'react';
 import axios from 'axios';
 
+
 const initMovie = {
     id: Date.now(),
     title: "",
@@ -23,7 +24,12 @@ const UpdateMovieForm = props => {
 
     const changeHandler = (event) => {
         const { name , value } = event.target;
-        setMovie({...movie, [name]: value });
+        if (name === "stars") {
+            const starValue = value.split(",");
+            setMovie({...movie, [name]: starValue });
+        } else {
+            setMovie({...movie, [name]: value });
+        }
     };
 
     const submitHandler = () => {
@@ -75,6 +81,18 @@ const UpdateMovieForm = props => {
                 value={movie.metascore}
                 aria-describedby="metascoreError" />
                 <small id="metascoreError" className="form-text text-muted"></small>
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="starsInput">Edit Stars Section:</label>
+                <input name="stars"
+                id="starsInput"
+                className="form-control"
+                type="text"
+                onChange={changeHandler}
+                value={movie.stars.toString()}
+                aria-describedby="starsError" />
+                <small id="starsError" className="form-text text-muted"></small>
             </div>
 
             <button type="button" className="btn btn-primary" onClick={submitHandler}>Submit</button>
