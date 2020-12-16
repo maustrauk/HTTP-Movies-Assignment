@@ -97,6 +97,19 @@ body {
   background-color: lightskyblue;
 }
 
+.add-button {
+  margin-bottom: 2em;
+  margin-left: 50%;
+  border: 1px solid grey;
+  padding: 5px 5px;
+  background-color: lightgreen;
+}
+
+.add-button:hover {
+  background-color: green;
+  color: white;
+}
+
 .movie-warning {
   color: red;
   text-align: center;

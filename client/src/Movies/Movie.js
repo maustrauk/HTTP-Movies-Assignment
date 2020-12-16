@@ -37,6 +37,10 @@ const Movie = props => {
     })
   }
 
+  const onAdd = () => {
+    props.history.push('/add-movie');
+  }
+
   useEffect(() => {
     fetchMovie(params.id);
   }, [params.id]);
@@ -45,8 +49,8 @@ const Movie = props => {
     return <div>Loading movie information...</div>;
   }
 
-  return (
-    <div className="save-wrapper">
+  return (<div>
+     <div className="save-wrapper">
       <MovieCard movie={movie} />
 
       <div className="save-button" onClick={saveMovie}>
@@ -60,7 +64,10 @@ const Movie = props => {
       <div className="delete-button" onClick={deleteMovie}>
         Delete
       </div>
-    </div>
+
+      </div>
+      <button className="add-button" onClick={onAdd}>Add Movie</button>
+  </div>   
   );
 }
 

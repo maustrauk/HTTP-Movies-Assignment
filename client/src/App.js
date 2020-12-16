@@ -4,9 +4,10 @@ import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import UpdateMovieForm from './forms/UpdateMovieForm';
+import AddMovieForm from './forms/AddMovieForm';
 import axios from 'axios';
 
-const App = () => {
+const App = props => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
   const [reloadApp, setReloadApp] = useState(false);
@@ -30,7 +31,6 @@ const App = () => {
     console.log("App reloaded");
   }, [reloadApp]);
 
-
   return (
     <div>
       <SavedList list={savedList} />
@@ -46,6 +46,10 @@ const App = () => {
 
       <Route path="/update-movie/:id"
       render={props => <UpdateMovieForm {...props}  setReloadApp={setReloadApp} reloadApp={reloadApp}/>}
+      />
+
+      <Route path="/add-movie"
+      render={props => <AddMovieForm {...props}  setReloadApp={setReloadApp} reloadApp={reloadApp}/>}
       />
     </div>
   );
